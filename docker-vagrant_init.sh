@@ -13,9 +13,6 @@ sudo mv /tmp/docker-compose /usr/bin/docker-compose
 sudo chmod 775 /usr/bin/docker-compose
 sudo docker-compose -v
 
-find /usr/lib/systemd/system/docker.service -type f -print | xargs sed -i -e "s*ExecStart=/usr/bin/dockerd*ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375*g"
-echo export DOCKER_HOST=tcp://127.0.0.1:2375 >> .bashrc
-
 sudo service docker start
 sudo chkconfig docker on
 docker -v
